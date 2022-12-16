@@ -54,5 +54,8 @@ if __name__ == '__main__':
     visitors_in_vault = Visit.objects.filter(leaved_at=None)
     for i in range(len(visitors_in_vault)):
         print(visitors_in_vault[i].passcard.owner_name)
-    # all_passcards = Passcard.objects.filter(is_active=True)
-    # print(all_passcards)
+    # step13 View all visits by passcard
+    visitors = Passcard.objects.all()
+    print(visitors[0])
+    visitor = Passcard.objects.filter(owner_name="Jennifer Martin")
+    visits_by_passcard = Visit.objects.filter(passcode=Passcard.owner_name)

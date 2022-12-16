@@ -33,7 +33,7 @@ class Visit(models.Model):
     def format_duration(delta):
         hours = floor(delta.total_seconds() / 3600)
         minutes = floor((delta.total_seconds() - 3600 * hours) // 60)
-        duration = f'{hours}h {minutes}min'
+        duration = f'{hours}ч {minutes}мин'
         return duration
 
     def get_duration(visit):
