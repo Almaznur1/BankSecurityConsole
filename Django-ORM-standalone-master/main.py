@@ -43,16 +43,16 @@ if __name__ == '__main__':
     # print(visitors_in_vault)
 
     # step10 Time spent in vault
-    visits = Visit.objects.all()
-    print('Entered at, MSK: {}\nLocated in vault: {}'.format(
-        localtime(visits[0].entered_at),
-        visits[0].leaved_at - visits[0].entered_at
-        )
-    )
+    # visits = Visit.objects.all()
+    # print('Entered at, MSK: {}\nLocated in vault: {}'.format(
+    #     localtime(visits[0].entered_at),
+    #     visits[0].leaved_at - visits[0].entered_at
+    #     )
+    # )
 
     # step11 The names of those who are currently in vault
     visitors_in_vault = Visit.objects.filter(leaved_at=None)
     for i in range(len(visitors_in_vault)):
         print(visitors_in_vault[i].passcard.owner_name)
-    all_passcards = Passcard.objects.filter(is_active=True)
-    print(all_passcards)
+    # all_passcards = Passcard.objects.filter(is_active=True)
+    # print(all_passcards)
