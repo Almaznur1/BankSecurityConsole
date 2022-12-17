@@ -28,3 +28,15 @@ class Visit(models.Model):
                 if self.leaved_at else 'not leaved'
             )
         )
+
+    def get_duration(visit):
+        delta = visit.leaved_at - visit.entered_at
+        return delta
+
+    def is_visit_long(visit, minutes=60):
+        seconds = 60 * minutes
+        if (visit.leaved_at - visit.entered_at).total_seconds() > seconds:
+            return True
+        else:
+            return False
+ 

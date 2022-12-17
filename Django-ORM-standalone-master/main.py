@@ -7,6 +7,7 @@ django.setup()
 
 from datacenter.models import Passcard, Visit  # noqa: E402
 from django.utils.timezone import localtime
+from datacenter.models import Visit
 
 
 if __name__ == '__main__':
@@ -56,7 +57,10 @@ if __name__ == '__main__':
     #     print(visitors_in_vault[i].passcard.owner_name)
 
     # step13 View all visits by passcard
-    print(Visit.objects.filter(passcard=2))
+    # print(Visit.objects.filter(passcard=2))
 
     # step14 Over an hour visits
-    
+    visits = Visit.objects.all()
+    for i in range(len(visits)):
+        if Visit.is_visit_long(visits[i]):
+            print(visits[i])
