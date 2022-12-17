@@ -60,7 +60,13 @@ if __name__ == '__main__':
     # print(Visit.objects.filter(passcard=2))
 
     # step14 Over an hour visits
-    visits = Visit.objects.all()
-    for i in range(len(visits)):
-        if Visit.is_visit_long(visits[i]):
-            print(visits[i])
+    # visits = Visit.objects.filter(leaved_at__gt='1970-01-01T00:00:00+03')
+    # for visit in visits:
+    #     if Visit.is_visit_long(visit):
+    #         print(visit)
+
+    # step15 Get passcard
+    passcard = Passcard.objects.get(passcode='7ef4341f-ff94-4a32-a009-0aa43cf98bf0')
+    print(passcard)
+    visits = Visit.objects.filter(passcard=passcard)
+    print(visits)

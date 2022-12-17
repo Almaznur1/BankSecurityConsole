@@ -40,4 +40,10 @@ class Visit(models.Model):
         current_time = datetime.now(timezone.utc)
         delta = current_time - visit.entered_at
         return delta
- 
+
+    def is_visit_long(visit, minutes=60):
+        seconds = 60 * minutes
+        if visit.leaved_at == None and (datetime.now(timezone.utc) - visit.entered_at).total_seconds() > seconds or (visit.leaved_at - visit.entered_at).total_seconds() > seconds:
+            return True
+        else:
+            return False

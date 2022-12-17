@@ -13,7 +13,7 @@ def storage_information_view(request):
                 'who_entered': visits[i].passcard.owner_name,
                 'entered_at': visits[i].entered_at,
                 'duration': Visit.format_duration(Visit.get_duration(visits[i])),
-                'is_strange': '',
+                'is_strange': Visit.is_visit_long(visits[i]),
             }
         )
     context = {
