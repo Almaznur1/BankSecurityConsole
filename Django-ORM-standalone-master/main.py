@@ -66,7 +66,10 @@ if __name__ == '__main__':
     #         print(visit)
 
     # step15 Get passcard
-    passcard = Passcard.objects.get(passcode='7ef4341f-ff94-4a32-a009-0aa43cf98bf0')
+    passcard = Passcard.objects.get(owner_name='Renee Sexton')
     print(passcard)
     visits = Visit.objects.filter(passcard=passcard)
     print(visits)
+    print()
+    visitor = Visit.objects.filter(leaved_at=None)
+    print(visitor)
