@@ -51,11 +51,12 @@ if __name__ == '__main__':
     # )
 
     # step11 The names of those who are currently in vault
-    visitors_in_vault = Visit.objects.filter(leaved_at=None)
-    for i in range(len(visitors_in_vault)):
-        print(visitors_in_vault[i].passcard.owner_name)
+    # visitors_in_vault = Visit.objects.filter(leaved_at=None)
+    # for i in range(len(visitors_in_vault)):
+    #     print(visitors_in_vault[i].passcard.owner_name)
+
     # step13 View all visits by passcard
-    visitors = Passcard.objects.all()
-    print(visitors[0])
-    visitor = Passcard.objects.filter(owner_name="Jennifer Martin")
-    visits_by_passcard = Visit.objects.filter(passcode=Passcard.owner_name)
+    print(Visit.objects.filter(passcard=2))
+
+    # step14 Over an hour visits
+    
