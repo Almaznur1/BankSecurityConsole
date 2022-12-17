@@ -37,13 +37,15 @@ class Visit(models.Model):
         return duration
 
     def get_duration(visit):
-        current_time = datetime.now(timezone.utc)
-        delta = current_time - visit.entered_at
-        return delta
+        if visit.leaved_at is None:
+            current_time = datetime.now(timezone.utc)
+            return current_time - visit.entered_at
+        else:
+            return visit.leaved_at - visit.entered_at
 
     def is_visit_long(visit, minutes=60):
         seconds = 60 * minutes
-        if visit.leaved_at == None and (datetime.now(timezone.utc) - visit.entered_at).total_seconds() > seconds or (visit.leaved_at - visit.entered_at).total_seconds() > seconds:
+        if visit.leaved_at is None and (datetime.now(timezone.utc) - visit.entered_at).total_seconds() > seconds or (visit.leaved_at - visit.entered_at).total_seconds() > seconds:
             return True
         else:
             return False
