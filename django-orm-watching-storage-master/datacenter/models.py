@@ -47,14 +47,9 @@ class Visit(models.Model):
         formatted_duration = f'{hours}ч {minutes}мин'
         return formatted_duration
 
-    def is_visit_long(visit, minutes=60):
+    def is_visit_long(duration, minutes=60):
         long_visit_in_seconds = 60 * minutes
-        if visit.leaved_at is None:
-            if (datetime.now(timezone.utc) -
-                    visit.entered_at).total_seconds() > long_visit_in_seconds:
-                return True
+        if duration.total_seconds() > long_visit_in_seconds:
+            return True
         else:
-            if (visit.leaved_at -
-                    visit.entered_at).total_seconds() > long_visit_in_seconds:
-                return True
-        return False
+            return False
