@@ -15,7 +15,7 @@ pip install -r requirements.txt
 Для запуска сайта запустите файл main.py
 
 ```
-python .\django-orm-watching-storage-master\main.py
+python .\main.py
 ```
 
 Затем откройте в браузере страницу с данными посетителей хранилища по следующему адресу:
