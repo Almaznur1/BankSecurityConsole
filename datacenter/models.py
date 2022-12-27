@@ -31,16 +31,16 @@ class Visit(models.Model):
             )
         )
 
-    def get_duration(visit):
-        duration = timezone.localtime(visit.leaved_at) - visit.entered_at
+    def get_duration(self):
+        duration = timezone.localtime(self.leaved_at) - self.entered_at
         return duration
 
-    def format_duration(delta):
-        hours = floor(delta.total_seconds() / 3600)
-        minutes = floor((delta.total_seconds() - 3600 * hours) // 60)
+    def format_duration(self, duration):
+        hours = floor(duration.total_seconds() / 3600)
+        minutes = floor((duration.total_seconds() - 3600 * hours) // 60)
         formatted_duration = f'{hours}ч {minutes}мин'
         return formatted_duration
 
-    def is_visit_long(duration, minutes=60):
+    def is_visit_long(self, duration, minutes=60):
         long_visit_in_seconds = 60 * minutes
         return duration.total_seconds() > long_visit_in_seconds
