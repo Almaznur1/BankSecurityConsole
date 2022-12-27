@@ -43,7 +43,4 @@ class Visit(models.Model):
 
     def is_visit_long(duration, minutes=60):
         long_visit_in_seconds = 60 * minutes
-        if duration.total_seconds() > long_visit_in_seconds:
-            return True
-        else:
-            return False
+        return duration.total_seconds() > long_visit_in_seconds
