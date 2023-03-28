@@ -18,7 +18,11 @@ DATABASES = {
 
 INSTALLED_APPS = ['datacenter']
 
-DEBUG = True
+SECRET_KEY = env('SECRET_KEY', 'change_me')
+
+DEBUG = env.bool('DEBUG', False)
+
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', '127.0.0.1')
 
 ROOT_URLCONF = 'project.urls'
 
